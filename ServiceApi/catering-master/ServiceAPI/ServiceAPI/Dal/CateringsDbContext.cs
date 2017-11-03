@@ -17,7 +17,7 @@ namespace ServiceAPI.Dal
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder
                 //.UseMySql(@"Server=localhost;database=corso;uid=corso;pwd=unict;");
-                .UseMySql(@"Server=localhost;database=agenziacatcorso;uid=root;pwd=fold"); /*nel progetto crea un utente con password*/
+                .UseMySql(@"Server=localhost;database=agenziacatcorso;uid=root;"); /*nel progetto crea un utente con password*/
 
         /*creazione del modello*/
         protected override void OnModelCreating(ModelBuilder modelBuilder)
