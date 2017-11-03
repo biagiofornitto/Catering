@@ -1,0 +1,66 @@
+<h1>Lista dei menu</h1>
+
+<p *ngIf="!menus"><em>Loading...</em></p>
+
+<table class='table' *ngIf="menus">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Costo Totale</th>
+            <th>Ristorante</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let menu of menus">
+            <!--Questi campi devono essere uguali a quelli che restituisce il json-->
+            <td>{{ menu.id }}</td>
+            <td>{{ menu.costo_Totale }}</td>
+            <td>{{ menu.idRistorante }}</td>
+            <td>
+                <input type="hidden" #id  value="{{ menu.id }}">
+                <button class="bottone" (click)="aggiornaMenu(id.value,costoTot.value,ristorante.value)">Aggiorna</button>
+            </td>
+            <td>
+                <button class="bottone" (click)="cancellaMenu(id.value)">Cancella</button>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br />
+
+<h2>Inserisci Menu'</h2>
+<div class="buttons">
+    <button class="bottone" (click)="inserisciMenu(costoTot.value,ristorante.value)">Inserisci Menu'</button>
+    <br />
+    <br />
+ <!--   <button class="bottone" (click)="aggiornaMenu(id.value,costoTot.value,ristorante.value)">Aggiorna Menu</button>
+    <br />
+    <br />
+    <button class="bottone" (click)="cancellaMenu(id.value)">Cancella Menu</button>-->
+</div>
+
+
+
+
+ <!--   <label for="id">ID</label>
+    <br />
+    <input type="text" #id [(ngModel)]="idm" required>
+
+    <br />-->
+
+
+    <label for="costoTot">Costo Totale</label>
+    <br />
+    <input type="number" min="0" #costoTot [(ngModel)]="costo" required>
+    <br />
+
+
+    <label for="ristorante">Ristorante</label>
+    <br />
+    <input type="number" min="0" #ristorante [(ngModel)]="rist" required>
+
+    <br />
+    <br />
+   

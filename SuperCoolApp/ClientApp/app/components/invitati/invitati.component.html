@@ -1,0 +1,70 @@
+<h1>Lista degli invitati</h1>
+
+<p *ngIf="!invitati"><em>Loading...</em></p>
+
+<table class='table' *ngIf="invitati">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cognome</th>
+            <th>Nome</th>
+            <th>Catering</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let invitato of invitati">
+            <!--Questi campi devono essere uguali a quelli che restituisce il json-->
+            <td>{{ invitato.id }}</td>
+            <td>{{ invitato.cognome }}</td>
+            <td>{{ invitato.nome }}</td>
+            <td>{{ invitato.idCat }}</td>
+            <td>
+                <input type="hidden" #id value="{{ invitato.id }}">
+            
+                <button class="bottone" (click)="aggiornaInvitato(id.value,nome.value,cognome.value,idcat.value)">Aggiorna</button>
+              </td>
+            <td>
+                <button class="bottone" (click)="cancellaInvitato(id.value)">Cancella</button>
+
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br />
+
+<h2>Inserisci/Aggiorna invitato</h2>
+<div class="buttons">
+    <br />
+    <br />
+    <button class="bottone" (click)="inserisciInvitato(cognome.value,nome.value,idcat.value)">Inserisci Invitato</button>
+  
+   <!-- <button class="bottone" (click)="aggiornaInvitato(id.value,nome.value,cognome.value,idcat.value)">Aggiorna Invitato</button>
+
+    <button class="bottone" (click)="cancellaInvitato(id.value)">Cancella Invitato</button>-->
+</div>
+
+
+
+<!--    <label for="id">ID</label>
+    <br />
+    <input type="number" min="0" #id [(ngModel)]="idi" required>
+
+    <br />-->
+
+
+    <label for="nome">Nome</label>
+    <br />
+    <input type="text" #nome [(ngModel)]="nom" required />
+    <br />
+    <label for="cognome">Cognome</label>
+    <br />
+    <input type="text" #cognome [(ngModel)]="cogn" required />
+    <br />
+    <label for="idcat">ID Catering</label>
+    <br />
+    <input type="number" min="0" #idcat [(ngModel)]="idc" required />
+
+    <br />
+    <br />
+

@@ -1,0 +1,61 @@
+<h1>Lista dei ristoranti</h1>
+
+<p *ngIf="!ristoranti"><em>Loading...</em></p>
+
+<table class='table' *ngIf="ristoranti">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Piva</th>
+            <th>Indirizzo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ristorante of ristoranti">
+            <!--Questi campi devono essere uguali a quelli che restituisce il json-->
+            <td>{{ ristorante.id }}</td>
+            <td>{{ ristorante.username }}</td>
+            <td>{{ ristorante.piva }}</td>
+            <td>{{ ristorante.indirizzo }}</td>
+            <td>
+                <input type="hidden" #id  value="{{ ristorante.id }}">
+                <button class="bottone" (click)="aggiornaRistorante(id.value,piva.value,indirizzo.value)">Aggiorna</button>
+            </td>
+            <td>
+                <button class="bottone" (click)="cancellaRistorante(id.value)">Cancella</button>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br />
+
+<h2>Inserisci/Aggiorna ristorante</h2>
+<div class="buttons">
+    <button class="bottone" (click)="inserisciRistorante(piva.value,indirizzo.value)">Inserisci Ristorante</button>
+    <br />
+    <br />
+  <!--  <button class="bottone" (click)="aggiornaRistorante(piva.value,indirizzo.value)">Aggiorna Ristorante</button>
+    <br />
+    <br />
+    <button class="bottone" (click)="cancellaRistorante(piva.value)">Cancella Ristorante</button>-->
+</div>
+
+
+
+    <label for="piva">Partita IVA</label>
+    <br />
+    <input type="text" #piva [(ngModel)]="piv" required>
+
+    <br />
+
+
+    <label for="indirizzo">Indirizzo</label>
+    <br />
+    <input type="text" #indirizzo [(ngModel)]="ind" required />
+
+    <br />
+    <br />
+

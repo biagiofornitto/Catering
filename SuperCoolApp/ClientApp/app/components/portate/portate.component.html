@@ -1,0 +1,65 @@
+<h1>Lista delle portate</h1>
+
+
+
+
+<p *ngIf="!portate"><em>Loading...</em></p>
+
+<table id='portate' class='table' *ngIf="portate">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Costo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let portata of portate">
+            <!--Questi campi devono essere uguali a quelli che restituisce il json-->
+           <td>{{ portata.id }}</td>
+            <td>{{ portata.nome }}</td>
+            <td>{{ portata.costo }}</td>
+            <td>
+                <input type="hidden" #id  value="{{ portata.id }}">
+                <button class="bottone" (click)="aggiornaPortata(id.value,nome.value,costo.value)">Aggiorna</button>
+            </td>
+            <td>
+               <button class="bottone" (click)="cancellaPortata(id.value)">Cancella</button>
+
+
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br />
+
+<h2>Inserisci portata</h2>
+<div class="buttons">
+    
+
+    <button class="bottone" (click)="inserisciPortata(nome.value,costo.value)">Inserisci Portata</button>
+    <br />
+    <br />
+<!--    <button class="bottone" (click)="aggiornaPortata(id.value,nome.value,costo.value)">Aggiorna Portata</button>
+    <br />
+    <br />
+    <button class="bottone" (click)="cancellaPortata(id.value)">Cancella Portata</button>-->
+</div>
+
+
+
+
+    <label for="nome">Nome</label>
+    <br />
+    <input type="text" #nome [(ngModel)]="nomep" required>
+    <br />
+
+
+    <label for="costo">Costo</label>
+    <br />
+    <input type="number" min="0" #costo [(ngModel)]="cost" required>
+
+
+  

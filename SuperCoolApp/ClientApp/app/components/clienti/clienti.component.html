@@ -1,0 +1,93 @@
+<h1>Lista dei clienti</h1>
+
+<p *ngIf="!clienti"><em>Loading...</em></p>
+
+<table class='table' *ngIf="clienti">
+    <thead>
+        <tr>
+            <th>Codice Fiscale</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Citta</th>
+            <th>Indirizzo</th>
+            <th>Telefono</th>
+            <th>N_Catering</th>
+            <th>Spesa Totale</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of clienti">
+            <!--Questi campi devono essere uguali a quelli che restituisce il json-->
+            <td>{{ cliente.codice_Fiscale }}</td>
+            <td>{{ cliente.nome }}</td>
+            <td>{{ cliente.cognome }}</td>
+            <td>{{ cliente.citta }}</td>
+            <td>{{ cliente.indirizzo }}</td>
+            <td>{{ cliente.telefono }}</td>
+            <td>{{ cliente.n_Catering }}</td>
+            <td>{{ cliente.spesa_Totale }}</td>
+            <td>
+                <input type="hidden" #id  value="{{ cliente.id }}">
+
+                <button class="bottone" (click)="aggiornaCliente(id.value,codice.value,nome.value,cognome.value,citta.value,indirizzo.value,telefono.value)">Aggiorna</button>
+            </td>
+            <td>
+                <button class="bottone" (click)="cancellaCliente(id.value)">Cancella</button>
+
+
+            </td>
+           
+        </tr>
+    </tbody>
+</table>
+<br />
+
+<h1>Inserisci/Aggiorna cliente</h1>
+<div class="buttons">
+    <br />
+    <br />
+    <button class="bottone" (click)="inserisciCliente(codice.value,nome.value,cognome.value,citta.value,indirizzo.value,telefono.value)">Inserisci Cliente</button>
+
+  <!--  <button class="bottone" (click)="aggiornaCliente(codice.value,nome.value,cognome.value,citta.value,indirizzo.value,telefono.value)">Aggiorna Cliente</button>
+    <br />
+    <br />
+    <button class="bottone" (click)="cancellaCliente(codice.value)">Cancella Cliente</button>-->
+</div>
+
+
+
+    <label for="codice">Codice</label>
+    <br />
+    <input type="text" #codice [(ngModel)]="codi" required>
+
+    <br />
+
+
+   <label for="nome">Nome</label>
+    <br />
+    <input type="text" #nome [(ngModel)]="nom" required>
+    <br />
+
+
+    <label for="cognome">Cognome</label>
+    <br />
+    <input type="text"  #cognome [(ngModel)]="cogn" required>
+
+    <br />
+    <label for="citta">Citta'</label>
+    <br />
+    <input type="text" #citta [(ngModel)]="citt" required>
+
+    <br />
+
+    <label for="indirizzo">Indirizzo</label>
+    <br />
+    <input type="text" #indirizzo [(ngModel)]="indiriz" required>
+
+    <br />
+
+    <label for="telefono">Telefono</label>
+    <br />
+    <input type="text" min="0" #telefono [(ngModel)]="tel" required>
+
+

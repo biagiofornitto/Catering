@@ -1,0 +1,53 @@
+<div class='main-nav'>
+    <div class='navbar navbar-inverse'>
+        <div class='navbar-header'>
+            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
+                <span class='sr-only'>Toggle navigation</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </button>
+            <a class='navbar-brand' [routerLink]="['/home']">Catering 4YOU</a>
+        </div>
+        <div class='clearfix'></div>
+        <div class='navbar-collapse collapse'>
+            <ul class='nav navbar-nav'>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/home']">
+                        <span class='glyphicon glyphicon-home'></span> Home
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/caterings']">
+                        <span class='glyphicon glyphicon-shopping-cart'></span> Catering
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/clienti']">
+                        <span class='glyphicon glyphicon-user'></span> Clienti
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/ristoranti']">
+                        <span class='glyphicon glyphicon-glass'></span> Ristoranti
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/menus']">
+                        <span class='glyphicon glyphicon-menu-down'></span> Menu
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/portate']">
+                        <span class='glyphicon glyphicon-menu-hamburger'></span> Portate
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/invitati']">
+                        <span class='glyphicon glyphicon-stats'></span> Invitati
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

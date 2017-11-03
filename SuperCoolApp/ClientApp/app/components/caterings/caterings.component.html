@@ -1,0 +1,99 @@
+<h1>Lista dei catering</h1>
+
+
+<p *ngIf="!caterings"><em>Loading...</em></p>
+
+<table class='table' *ngIf="caterings">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Codice</th>
+            <th>Data</th>
+            <th>Cliente</th>
+            <th>Menu</th>
+            <th>Numero Partecipanti</th>
+            <th>Costo Totale</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let catering of caterings">
+            <!--Questi campi devono essere uguali a quelli che restituisce il json--> 
+            <td>{{ catering.id }}</td>
+            <td>{{ catering.codice }}</td>
+            <td>{{ catering.data }}</td>
+            <td>{{ catering.cliente }}</td>
+            <td>{{ catering.menu }}</td>
+            <td>{{ catering.numeroP }}</td>
+            <td>{{ catering.costoT }}</td>
+            <td>
+                <input type="hidden"  #id  value="{{ catering.id }}">
+                <button class="bottone" (click)="aggiornaCatering(id.value,codice.value,data.value,cliente.value,menu.value,partecipanti.value,costo.value)">Aggiorna</button>
+              </td> 
+            <td>
+                <button class="bottone" (click)="cancellaCatering(id.value)">Cancella</button>
+            
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br />
+
+<h2>Inserisci/Aggiorna catering</h2>
+
+    <div class="buttons">
+        <br />
+        <br />
+        <button class="bottone" (click)="inserisciCatering(codice.value,data.value,cliente.value,menu.value,partecipanti.value,costo.value)">Inserisci Catering</button>
+      <!--  <br />
+        <br />
+        <button class="bottone" (click)="aggiornaCatering(codice.value,data.value,cliente.value,menu.value,partecipanti.value,costo.value)">Aggiorna Catering</button>
+        <br />
+        <br />
+        <button class="bottone" (click)="cancellaCatering(codice.value)">Cancella Catering</button>
+        <br />
+        <br />-->
+  </div>
+
+
+
+
+    <label for="codice">Codice</label>
+    <br />
+    <input type="number" min="0" #codice [(ngModel)]="cod" required>
+
+    <br />
+
+
+    <label for="data">Data</label>
+    <br />
+    <input type="date" #data [(ngModel)]="dat" required>
+    <br />
+
+
+    <label for="cliente">Cliente</label>
+    <br />
+    <input type="number" min="0" #cliente [(ngModel)]="clie" required>
+
+    <br />
+    <label for="menu">Menu</label>
+    <br />
+    <input type="number" min="0" #menu [(ngModel)]="men" required>
+
+    <br />
+
+    <label for="partecipanti">Numero Partecipanti</label>
+    <br />
+    <input type="number" min="0" #partecipanti [(ngModel)]="numeropar" required>
+
+    <br />
+
+    <label for="costo">Costo totale</label>
+    <br />
+    <input type="number" min="0" #costo [(ngModel)]="costot" required>
+
+    <br />
+    <br />
+
+
+
+   
